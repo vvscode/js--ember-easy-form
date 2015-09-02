@@ -1,7 +1,7 @@
 {
   "name": "ember-easy-forms-patched",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Patch ember-easy-forms to use with htmlbars.",
   "directories": {
     "doc": "doc",
     "test": "tests"
