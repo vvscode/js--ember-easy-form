@@ -645,6 +645,17 @@ var EasyFormShims;
     }
   };
 
+  var parseOldBindings = function(options, hash) {
+    Object.keys(options.hashTypes).forEach(function(key) {
+      if(options.hashTypes[key] === 'ID' && (key in hash)) {
+        hash[key] = options.data.view._getBindingForStream('' + hash[key]);
+      }
+    });
+    if(typeof hash.hash === 'object') {
+      parseOldBindings(options, hash.hash);
+    }
+  };
+
   Ember.EasyForm.processOptions = function(property, options) {
     if (options) {
       if (Ember.I18n) {
@@ -658,6 +669,8 @@ var EasyFormShims;
     } else {
       options = property;
     }
+
+    parseOldBindings(options, options.hash);
 
     return options;
   };
