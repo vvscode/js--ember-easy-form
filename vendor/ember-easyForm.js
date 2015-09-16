@@ -148,7 +148,7 @@ var EasyFormShims;
 
   Ember.Handlebars.registerHelper('input', function(property, options) {
     if (arguments.length === 1) {
-      return Ember.Handlebars.helpers['ember-input'].call(this, arguments[0]);
+      return Ember.Handlebars.helpers['ember-input'].helperFunction.call(this, arguments[0]);
     }
 
     options = Ember.EasyForm.processOptions(property, options);
