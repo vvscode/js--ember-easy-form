@@ -118,6 +118,14 @@ var EasyFormShims;
 (function() {
   Ember.Handlebars.registerHelper('form-for', function(object, options) {
     var parentView = options.data.view;
+    
+    // options still send inside in old-style ( without bindings, but with hashTypes === 'ID')
+    // so use already implemented code to translate such bindings into bindingStreams
+    // made to process form params like
+    //    {{#form-for form wrapper="horizontal" class=newFormClasses}}
+    // without this convertion we'll get 
+    //    <form class="newFormClasses" ...
+    options = Ember.EasyForm.processOptions(options);
 
     EasyFormShims.viewHelper(this, Ember.EasyForm.Form, options);
 
